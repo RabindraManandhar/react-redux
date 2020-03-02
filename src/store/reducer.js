@@ -9,9 +9,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_PERSON:
             const newPerson = {
                 id: Math.random(),
-                name: 'Rabindra',
-                age: Math.floor(Math.random() * 30)
-            }
+                name: action.personData.name,
+                age: action.personData.age
+            };
             return {
                 ...state,
                 persons: state.persons.concat(newPerson)
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 persons: state.persons.filter(person => person.id !== action.personId)
-            }
+            };
 
         default:
             return state;
